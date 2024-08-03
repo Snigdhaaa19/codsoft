@@ -1,0 +1,27 @@
+#include <iostream>
+#include <random>
+using namespace std;
+
+int main() {
+  random_device rd;
+  mt19937 gen(rd());
+  uniform_int_distribution<int> dis(1, 5); 
+  int mindNumber = dis(gen);
+  int guess, Guesses = 0;
+  cout << "Welcome to the NumberPlay!" << endl;
+  cout << "Guess a number in between 1-5, let's see if you can guess what's on my mind!" << endl;
+  do {
+    cout << "Enter your guess (only numbers between 1-5): ";
+    cin >> guess;
+    Guesses++;
+    if (guess == mindNumber) {
+      cout << "Congratulations! You guessed the number only in " << Guesses << " tries." << endl;
+    } else if (guess > mindNumber) {
+      cout << "Larger than the number I thought! Try again." << endl;
+    } else {
+      cout << "Smaller than the number I thought! Try again." << endl;
+    }
+  } while (guess = mindNumber);
+
+  return 0;
+}
